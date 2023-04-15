@@ -1,5 +1,5 @@
 {
-  "name": "express-cli",
+  "name": "@dev.mohamed.kh/express-cli",
   "version": "1.0.0",
   "description": "Cli tool for generating an express project. Instead of wasting extra time creating your project structure, start building right away",
   "preferGlobal": true,
