@@ -1,6 +1,6 @@
 ## Contributing
 
-- Fork the project from the Github page - https://github.com/tolustar/express-api-cli
+- Fork the project from the Github page - https://github.com/devmohamedkh/express-cli
 - Clone the project into your local computer
 - Run _npm install_ to install the provided dependencies
 - Create a new branch and make your changes
