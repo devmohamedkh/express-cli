@@ -17,8 +17,7 @@ const result = yargs
     } else {
       console.log(
         chalk.red(`
-          Please provide a project name. 
-  
+          Please provide a project name.
           Example: 
           exp-cli create AwesomeProject
         `)
@@ -41,7 +40,7 @@ const result = yargs
   })
   .usage(
     `
-Usage: Speed up your application development with express-api-cli
+    Usage: Speed up your application development with express-api-cli
   `
   )
   .option('v', {

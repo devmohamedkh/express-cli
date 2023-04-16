@@ -12,7 +12,6 @@ const {
 const generateModel = async (model, config) => {
   if (!model) return;
   try {
-    
     await generateFile('model', model, config.lang, config.dbDriver);
 
     console.log(chalk.green(`${model}.model.${config.lang} generated successfully`));
@@ -58,16 +57,17 @@ const generateRoute = async (route, config) => {
 
 const generateResource = (resource, config) => {
   if (!resource) return;
-  generateModel(resource, config);
-  generateController(resource, config);
-  generateService(resource, config);
+  generateValidator(resource, config);
   generateRoute(resource, config);
+  generateService(resource, config);
+  generateController(resource, config);
+  generateModel(resource, config);
 };
 
 const generateValidator = async (validator, config) => {
   try {
     if (!validator) return;
-    await fs.writeFile(`./src/validators/${validator}.validator.${config.lang}`, '');
+    await generateFile('validator', validator, config.lang, config.dbDriver);
     console.log(chalk.green(`${validator}.validator.${config.lang} generated successfully`));
   } catch (error) {
     console.log(error);
