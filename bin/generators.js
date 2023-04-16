@@ -118,9 +118,8 @@ const generateMiddleware = async (middleware, config) => {
 const generateUnitTest = async (unittest, config) => {
   try {
     if (!unittest) return;
-    // await fs.writeFile(`./src/tests/unit/${unittest}.test.js`, unitTestTemplate(unittest));
-    await generateFile('tests/unit', unittest, config.lang, config.dbDriver);
 
+    await generateFile('tests/unit', unittest, config.lang, config.dbDriver);
     console.log(chalk.green(`unit/ ${unittest}.test.${config.lang} generated successfully`));
   } catch (error) {
     console.log(error);
