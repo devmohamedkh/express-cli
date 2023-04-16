@@ -1,7 +1,7 @@
 {
-  "name": "express-cli",
+  "name": "express-cli-helper",
   "version": "1.0.0",
-  "description": "express Cli tool for generating an express api project. Instead of wasting extra time creating your project structure, start building right away",
+  "description": "express CLI tool for generating an express api project. Instead of wasting extra time creating your project structure, start building right away",
   "preferGlobal": true,
   "bin": {
     "exp-cli": "./bin/index.js"
@@ -36,6 +36,7 @@
     "express",
     "api",
     "cli",
-    "express-cli"
+    "express-cli",
+    "node"
   ]
 }
