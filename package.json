@@ -1,6 +1,6 @@
 {
   "name": "express-cli-helper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "express CLI tool for generating an express api project. Instead of wasting extra time creating your project structure, start building right away",
   "preferGlobal": true,
   "bin": {
