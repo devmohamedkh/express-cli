@@ -28,7 +28,8 @@
     "mailgun-js": "^0.22.0",
     "morgan": "^1.10.0",
     "winston": "^3.3.3",
-    "winston-daily-rotate-file": "^4.5.0"
+    "winston-daily-rotate-file": "^4.5.0",
+    "bcryptjs": "^2.4.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.10.5",
