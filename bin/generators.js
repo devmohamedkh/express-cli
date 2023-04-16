@@ -12,9 +12,10 @@ const {
 const generateModel = async (model, config) => {
   if (!model) return;
   try {
-    await generateFile('model', model, config.lang, config.dbDriver);
-
-    console.log(chalk.green(`${model}.model.${config.lang} generated successfully`));
+    const res = await generateFile('model', model, config.lang, config.dbDriver);
+    if (res) {
+      console.log(chalk.green(`${model}.model.${config.lang} generated successfully`));
+    }
   } catch (error) {
     console.log(error);
   }
@@ -23,9 +24,10 @@ const generateModel = async (model, config) => {
 const generateController = async (controller, config) => {
   try {
     if (!controller) return;
-    await generateFile('controller', controller, config.lang, config.dbDriver);
-
-    console.log(chalk.green(`${controller}.controller.${config.lang} generated successfully`));
+    const res = await generateFile('controller', controller, config.lang, config.dbDriver);
+    if (res) {
+      console.log(chalk.green(`${controller}.controller.${config.lang} generated successfully`));
+    }
   } catch (error) {
     console.log(error);
   }
@@ -35,8 +37,10 @@ const generateService = async (service, config) => {
   try {
     if (!service) return;
 
-    await generateFile('service', service, config.lang, config.dbDriver);
-    console.log(chalk.green(`${service}.service.${config.lang} generated successfully`));
+    const res = await generateFile('service', service, config.lang, config.dbDriver);
+    if (res) {
+      console.log(chalk.green(`${service}.service.${config.lang} generated successfully`));
+    }
   } catch (error) {
     console.log(error);
   }
@@ -45,11 +49,12 @@ const generateService = async (service, config) => {
 const generateRoute = async (route, config) => {
   try {
     if (!route) return;
-    await generateFile('route', route, config.lang, config.dbDriver);
-
-    console.log(chalk.green(`${route}.route.${config.lang} generated successfully`));
-    addImportToRouteIndex(route, config.lang);
-    addRouteToRouteIndex(route, config.lang);
+    const res = await generateFile('route', route, config.lang, config.dbDriver);
+    if (res) {
+      console.log(chalk.green(`${route}.route.${config.lang} generated successfully`));
+      addImportToRouteIndex(route, config.lang);
+      addRouteToRouteIndex(route, config.lang);
+    }
   } catch (error) {
     console.log(error);
   }
@@ -67,8 +72,10 @@ const generateResource = (resource, config) => {
 const generateValidator = async (validator, config) => {
   try {
     if (!validator) return;
-    await generateFile('validator', validator, config.lang, config.dbDriver);
-    console.log(chalk.green(`${validator}.validator.${config.lang} generated successfully`));
+    const res = await generateFile('validator', validator, config.lang, config.dbDriver);
+    if (res) {
+      console.log(chalk.green(`${validator}.validator.${config.lang} generated successfully`));
+    }
   } catch (error) {
     console.log(error);
   }
@@ -78,7 +85,13 @@ const generateInterface = async (interface_, config) => {
   try {
     if (config.lang === 'js') return;
     if (!interface_) return;
-    await fs.writeFile(`./src/interfaces/${interface_}.interface.${config.lang}`, '');
+    const src = `./src/interfaces/${interface_}.interface.${config.lang}`;
+
+    if (fs.exists(src)) {
+      console.log(chalk.red(`${src} already exists`));
+      return;
+    }
+    await fs.writeFile(src, '');
     console.log(chalk.green(`${interface_}.interface.${config.lang} generated successfully`));
   } catch (error) {
     console.log(error);
@@ -88,7 +101,15 @@ const generateInterface = async (interface_, config) => {
 const generateUtil = async (util, config) => {
   try {
     if (!util) return;
-    await fs.writeFile(`./src/utils/${util}.util.${config.lang}`, '');
+
+    const src = `./src/utils/${util}.util.${config.lang}`;
+
+    if (fs.exists(src)) {
+      console.log(chalk.red(`${src} already exists`));
+      return;
+    }
+
+    await fs.writeFile(src, '');
     console.log(chalk.green(`${util}.util.${config.lang} generated successfully`));
   } catch (error) {
     console.log(error);
@@ -98,7 +119,12 @@ const generateUtil = async (util, config) => {
 const generateConfig = async (configFile, config) => {
   try {
     if (!configFile) return;
-    await fs.writeFile(`./src/config/${configFile}.${config.lang}`, '');
+    const src = `./src/config/${configFile}.${config.lang}`;
+    if (fs.exists(src)) {
+      console.log(chalk.red(`${src} already exists`));
+      return;
+    }
+    await fs.writeFile(src, '');
     console.log(chalk.green(`${configFile}.${config.lang} generated successfully`));
   } catch (error) {
     console.log(error);
@@ -108,7 +134,12 @@ const generateConfig = async (configFile, config) => {
 const generateMiddleware = async (middleware, config) => {
   try {
     if (!middleware) return;
-    await fs.writeFile(`./src/middlewares/${middleware}.middleware.${config.lang}`, '');
+    const src = `./src/middlewares/${middleware}.middleware.${config.lang}`;
+    if (fs.exists(src)) {
+      console.log(chalk.red(`${src} already exists`));
+      return;
+    }
+    await fs.writeFile(src, '');
     console.log(chalk.green(`${middleware}.middleware.${config.lang} generated successfully`));
   } catch (error) {
     console.log(error);
@@ -119,8 +150,10 @@ const generateUnitTest = async (unittest, config) => {
   try {
     if (!unittest) return;
 
-    await generateFile('tests/unit', unittest, config.lang, config.dbDriver);
-    console.log(chalk.green(`unit/ ${unittest}.test.${config.lang} generated successfully`));
+    const res = await generateFile('tests/unit', unittest, config.lang, config.dbDriver);
+    if (res) {
+      console.log(chalk.green(`unit/ ${unittest}.test.${config.lang} generated successfully`));
+    }
   } catch (error) {
     console.log(error);
   }
@@ -130,11 +163,17 @@ const generateIntegrationTest = async (integrationtest, config) => {
   try {
     if (!integrationtest) return;
 
-    await generateFile('tests/integration', integrationtest, config.lang, config.dbDriver);
-
-    console.log(
-      chalk.green(`integration/ ${integrationtest}.test.${config.lang} generated successfully`)
+    const res = await generateFile(
+      'tests/integration',
+      integrationtest,
+      config.lang,
+      config.dbDriver
     );
+    if (res) {
+      console.log(
+        chalk.green(`integration/ ${integrationtest}.test.${config.lang} generated successfully`)
+      );
+    }
   } catch (error) {
     console.log(error);
   }

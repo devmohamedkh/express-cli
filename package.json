@@ -1,7 +1,7 @@
 {
-  "name": "@dev.mohamed.kh/express-cli",
+  "name": "express-cli",
   "version": "1.0.0",
-  "description": "Cli tool for generating an express project. Instead of wasting extra time creating your project structure, start building right away",
+  "description": "express Cli tool for generating an express api project. Instead of wasting extra time creating your project structure, start building right away",
   "preferGlobal": true,
   "bin": {
     "exp-cli": "./bin/index.js"

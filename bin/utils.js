@@ -2,6 +2,7 @@
 const fs = require('fs-extra');
 const path = require('path');
 const ora = require('ora');
+const chalk = require('chalk');
 
 exports.addRouteToRouteIndex = (route, lang) => {
   const data = fs.readFileSync(`./src/routes/index.${lang}`).toString().split('\n');
@@ -66,6 +67,12 @@ exports.generateFile = async (dir, fileName, lang, dbDriver) => {
     srcCopy = `./../lib/${dbDriver}/${lang}/express/src/${dirs}/user.${dirExt}`;
     destinationCopy = `./src/${dirs}/${fileName}.${dirExt}`;
   }
+  const isFilexists = await fs.exists(destinationCopy);
+
+  if (isFilexists) {
+    console.log(chalk.red(`${destinationCopy} already exists`));
+    return false;
+  }
 
   await fs.copy(path.resolve(__dirname, srcCopy), destinationCopy);
 
@@ -75,6 +82,7 @@ exports.generateFile = async (dir, fileName, lang, dbDriver) => {
   newData = newData.replace(/User/g, FileName);
 
   fs.writeFileSync(destinationCopy, newData);
+  return true;
 };
 
 exports.checkLangAndDB = async () => {
