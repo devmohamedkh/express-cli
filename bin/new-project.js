@@ -41,8 +41,8 @@ const npmInstall = (projectName) => {
     Create something Awesome
        🚀🚀🚀🚀🚀
 
-    For How to use and more info on express-api-cli
-    Visit https://github.com/tolustar/express-api-cli/ 
+    For How to use and more info on express-cli-helper
+    Visit https://github.com/devmohamedkh/express-cli 
     Cheers!!!
 
     `)

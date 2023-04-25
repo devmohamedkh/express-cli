@@ -40,12 +40,12 @@ const result = yargs
   })
   .usage(
     `
-    Usage: Speed up your application development with express-api-cli
+    Usage: Speed up your application development with express-cli-helper
   `
   )
   .option('v', {
     alias: 'version',
-    describe: 'Get express-api-cli version',
+    describe: 'Get express-cli-helper version',
     type: 'string'
   })
   .option('m', {

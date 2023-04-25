@@ -109,7 +109,7 @@ exports.checkLangAndDB = async () => {
     console.log(
       chalk.yellow(`
         Database config not detected in src/config.
-        express-api-cli shall assume project default database config uses mongoose. Thank you.      
+        express-cli-helper shall assume project default database config uses mongoose. Thank you.      
       `)
     );
   }
@@ -118,9 +118,9 @@ exports.checkLangAndDB = async () => {
     console.log(
       chalk.yellow(`
       Application contains more than one DB configuration in src/config/database.js.
-      Please use one db configuration or remove unused imports to allow express-api-cli function properly. 
+      Please use one db configuration or remove unused imports to allow express-cli-helper function properly. 
 
-      In the meantime Express-api-cli shall use mongoose database configuration  
+      In the meantime express-cli-helper shall use mongoose database configuration  
       Thank you.      
     `)
     );
