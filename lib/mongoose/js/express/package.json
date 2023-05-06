@@ -24,6 +24,7 @@
     "http-status-codes": "^2.1.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.2",
+    "mongoose-paginate-v2": "^1.7.1",
     "@sendgrid/mail": "^7.2.5",
     "mailgun-js": "^0.22.0",
     "morgan": "^1.10.0",
